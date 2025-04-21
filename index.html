@@ -62,11 +62,30 @@ Anti-aliasing via supersampling is under integration and early tests show visibl
 Our CPU renderer has successfully rasterized glyphs into filled shapes that visually align with expectations from FreeType.
 The contours are closed correctly, interior holes are preserved using winding rules, and curve sampling is dense enough to ensure shape fidelity.
 </p>
+
+<figure>
+    <img src="./media/3.png" alt="Letter with Curves" width="300">
+    <figcaption>Basic Glyphs + Bezier curves</figcaption>
+  </figure>
+  
 <p>
 Although anti-aliasing is still being tuned, we’ve begun to compare aliased vs. smoothed results using supersampling.
 Early results demonstrate that supersampling significantly improves visual clarity around curve edges, validating our approach to pixel coverage estimation.
 These results are promising and indicate that our renderer is on the right track toward high-quality output.
 </p>
+
+<figure>
+    <img src="./media/outputg.png" alt="Letter with Curves" width="300">
+    <figcaption>Letter with Curves</figcaption>
+  </figure>
+  
+
+<figure>
+    <img src="./media/output.png" alt="Letter with Curves" width="300">
+    <figcaption>Letter without Curves</figcaption>
+  </figure>
+
+
 
 <h2>Reflections on Progress</h2>
 <p>
