@@ -44,17 +44,37 @@
 
 <p><strong>Link to Final Slides: </strong> <a href="https://docs.google.com/presentation/d/1kbRLRtB4DUGVzhKq4TOdJPcwAlWVAb9mF2iKYlNwYdU/edit?usp=sharing" target="_blank">Google Slides</a></p>
 
-<p><strong>Video part 1: </strong><a href="https://drive.google.com/file/d/1Ogt1gKZmkFgK7jSlOTIR9zGqB9kItZs-/view?usp=drive_link" target="_blank">Watch here</a></p>
-<p><strong>Video part 2: </strong><a href="https://drive.google.com/file/d/1GR0mNm5VAYF-Se6fpPuEyl-H2wtc7GZH/view?usp=drive_link" target="_blank">Watch here</a></p>
+<p><strong>Final Report Video: </strong><a href="https://drive.google.com/file/d/18JlJTOpAL61NVxUDC-0UwzD6y9mtmdAb/view?usp=sharing" target="_blank">Watch here</a></p>
+
 <p><strong>Webpages link: </strong><a href="https://vbansal-29.github.io/cs184_final/" target="_blank">https://vbansal-29.github.io/cs184_final/</a></p>
 
 <h1>Font Rendering Pipeline</h1>
 <p><strong>Team:</strong> Vishal Bansal, Varun Mittal, Clara Kim, Saatvik Billa</p>
-<p><a href="https://monstrosity1001.github.io/FInal-Project-Proposal/" target="_blank">Project Proposal</a></p>
 
 <h2>Abstract</h2>
 <p>
 Our project implements a high-quality font rendering pipeline capable of rastering TrueType fonts using CPU and GPU approaches. Using the Arial font (1320 glyphs), we extract glyph outlines, reconstruct Bézier paths, and rasterize them into anti-aliased bitmap images. We improved our scanline fill, added performance timing, and now support batch rendering of the entire alphabet and arbitrary sentences. Our work explores the trade-offs between CPU and GPU rendering regarding visual fidelity and performance, culminating in an interactive demo, detailed timing benchmarks, and compelling visual results. This report details our technical approach, challenges, results, and lessons learned.
+</p>
+
+<h2>System Overview:</h2>
+<pre style="font-family: 'Fira Mono', 'Consolas', 'Menlo', monospace; font-size: 1em; background: #f8f8f8; border: 1px solid #ddd; padding: 12px; border-radius: 8px; overflow-x: auto;">
+TTF glyph (points + tags)
+     │  FreeType (vector only)
+     ▼
+[ contour normaliser ]             implicit on‑curve mid‑points resolved
+     ▼
+primitive segment stream  ──►  ('LINE', p0, p1)  /  ('BEZIER', p0, c, p2)
+     ▼                                                   │  sample
+     └─────────►  edge list  ◄───────────────────────────┘
+                       │  scan‑line fill
+                       ▼
+          high‑res α‑mask  (supersample × supersample)
+                       │  Gaussian blur → block average
+                       ▼
+            final greyscale bitmap (0–255)
+</pre>
+<p style="font-style: italic; color: #444;">
+The pipeline stays vector‑based until the very last stage, ensuring resolution‑independence.
 </p>
 
 <h2>Technical Approach</h2>
@@ -83,19 +103,19 @@ Our CPU renderer now supports batch rendering of the entire alphabet, arbitrary 
 </p>
 <ul>
   <li><strong>Aliased vs. Anti-aliased comparison:</strong></li>
-  <li><img src="images/glyph_S_aliased.png" alt="Aliased glyph S" width="220" /> <img src="images/glyph_S_antialiased.png" alt="Anti-aliased glyph S" width="220" /></li>
-  <li><strong>Alphabet batch rendering:</strong> <img src="images/alphabet_grid.png" alt="Alphabet grid" width="600" /></li>
-  <li><strong>Sentence rendering:</strong> <img src="images/sentence_cs184.png" alt="Sentence output" width="600" /></li>
-  <li><strong>Timing benchmarks:</strong> <img src="images/timing_benchmarks.png" alt="Timing benchmarks" width="600" /></li>
+  <li><img src="images/noAAForG.png" alt="Aliased glyph G" width="220" /> <img src="images/AAForG.jpg" alt="Anti-aliased glyph G" width="220" /></li>
+  <li><strong>Alphabet batch rendering:</strong> <img src="images/alphabet_grid.jpeg" alt="Alphabet grid" width="600" /></li>
+  <li><strong>Sentence rendering:</strong> <img src="images/sentence_cs184.jpeg" alt="Sentence output" width="600" /></li>
+  <li><strong>CPU timing benchmarks:</strong> <img src="images/CPUTimeBenchmark.jpeg" alt="CPU timing benchmarks" width="600" /></li>
+  <li><strong>GPU timing benchmarks:</strong> <img src="images/GPUTimeBenchmark.jpeg" alt="GPU timing benchmarks" width="600" /></li>
 </ul>
-<p><em>(If your results are not yet exported as images, please save them from your notebook as PNGs/GIFs and place them in the <code>images/</code> directory.)</em></p>
+
+<h2>Reflections on Progress</h2>
 <p>
-<strong>Video Demo:</strong><br>
-<a href="https://drive.google.com/file/d/1Ogt1gKZmkFgK7jSlOTIR9zGqB9kItZs-/view?usp=drive_link" target="_blank">Part 1</a> | <a href="https://drive.google.com/file/d/1GR0mNm5VAYF-Se6fpPuEyl-H2wtc7GZH/view?usp=drive_link" target="_blank">Part 2</a>
+The images included above—such as the aliased vs. anti-aliased glyph comparison, alphabet batch rendering, and timing benchmarks—clearly demonstrate the evolution and effectiveness of our renderer. After several iterations and code improvements, we now have anti-aliasing working robustly: supersampling and Gaussian blur produce smooth, high-quality glyph edges, as evidenced by the side-by-side results. The batch rendering outputs show that our pipeline handles the full alphabet and sentences with consistent quality, and timing plots provide insight into performance bottlenecks.
 </p>
 <p>
-<strong>Interactive Demo:</strong><br>
-<a href="https://vbansal-29.github.io/cs184_final/" target="_blank">https://vbansal-29.github.io/cs184_final/</a>
+An interesting and somewhat unexpected finding is that our current GPU implementation is slower than the CPU version, as shown in the timing benchmarks. This is likely due to the lack of parallelization in our GPU code and the overheads associated with running on cloud GPU resources, rather than local hardware. With further optimization—such as parallelizing the fragment shader or using compute kernels—we expect the GPU to outperform the CPU, particularly for large-scale or real-time rendering tasks. Overall, our results validate the technical choices made so far, and the visual and quantitative outputs indicate we are on track toward a high-quality, scalable font rendering solution.
 </p>
 
 <h2>References</h2>
