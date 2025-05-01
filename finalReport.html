@@ -1,0 +1,112 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Font Rendering Pipeline - Milestone Report</title>
+    <style>
+        body {
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            margin: 40px;
+            line-height: 1.6;
+            max-width: 900px;
+            background-color: #fefefe;
+            color: #333;
+ }
+        h1, h2 {
+            color: #2c3e50;
+ }
+        a {
+            color: #2980b9;
+            text-decoration: none;
+ }
+        a:hover {
+            text-decoration: underline;
+ }
+    </style>
+    <style>
+        .centered-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fff;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+            padding: 40px 30px;
+ }
+    </style>
+</head>
+<body>
+<div class="centered-container">
+
+<p><strong>Link to Final Slides: </strong> <a href="https://docs.google.com/presentation/d/1kbRLRtB4DUGVzhKq4TOdJPcwAlWVAb9mF2iKYlNwYdU/edit?usp=sharing" target="_blank">Google Slides</a></p>
+
+<p><strong>Video part 1: </strong><a href="https://drive.google.com/file/d/1Ogt1gKZmkFgK7jSlOTIR9zGqB9kItZs-/view?usp=drive_link" target="_blank">Watch here</a></p>
+<p><strong>Video part 2: </strong><a href="https://drive.google.com/file/d/1GR0mNm5VAYF-Se6fpPuEyl-H2wtc7GZH/view?usp=drive_link" target="_blank">Watch here</a></p>
+<p><strong>Webpages link: </strong><a href="https://vbansal-29.github.io/cs184_final/" target="_blank">https://vbansal-29.github.io/cs184_final/</a></p>
+
+<h1>Font Rendering Pipeline</h1>
+<p><strong>Team:</strong> Vishal Bansal, Varun Mittal, Clara Kim, Saatvik Billa</p>
+<p><a href="https://monstrosity1001.github.io/FInal-Project-Proposal/" target="_blank">Project Proposal</a></p>
+
+<h2>Abstract</h2>
+<p>
+Our project implements a high-quality font rendering pipeline capable of rastering TrueType fonts using CPU and GPU approaches. We extract glyph outlines, reconstruct Bézier paths, and rasterize them into anti-aliased bitmap images. Our work explores the trade-offs between CPU and GPU rendering in terms of visual fidelity and performance, culminating in an interactive demo and a set of compelling visual results. This report details our technical approach, challenges, results, and lessons learned.
+</p>
+
+<h2>Technical Approach</h2>
+<p>
+<strong>Font Parsing and Outline Extraction:</strong> We used <code>freetype-py</code> to parse <code>.ttf</code> files, loading glyphs with <code>FT_LOAD_NO_BITMAP</code> to access raw vector data. We extracted contours and on/off-curve points and interpreted TrueType’s Bézier encoding, including implicit on-curve points between consecutive off-curve tags.
+</p>
+<p>
+<strong>Bézier Path Reconstruction:</strong> We implemented a path extractor that converts contours into polylines of straight lines and quadratic Bézier curves. Our logic handles TrueType’s implicit midpoints, ensuring precise glyph reconstruction. We validated this by visualizing outlines in Matplotlib (see Results).
+</p>
+<p>
+<strong>Rasterization:</strong> Our rasterizer takes Bézier paths and fills them using a scanline algorithm. To achieve anti-aliasing, we implemented supersampling: rasterizing at higher resolution, applying Gaussian blur, and downsampling to produce smooth edges. We compared aliased and anti-aliased outputs, confirming significant improvements in edge quality.
+</p>
+<p>
+<strong>Challenges and Lessons Learned:</strong> Decoding Bézier curves from font data—especially sequences of off-curve points—was complex and required detailed debugging. Visualizing outlines was crucial for understanding and validating our approach. We learned the value of modularizing the pipeline (parsing, path evaluation, rasterization), which also facilitates future GPU acceleration. Performance optimization (e.g., reducing redundant point-in-polygon tests) remains ongoing.
+</p>
+
+<h2>Results</h2>
+<p>
+Our CPU renderer successfully rasterizes glyphs into filled shapes that match FreeType’s output. Contours are closed, interior holes are preserved, and curve sampling ensures shape fidelity. Supersampling-based anti-aliasing significantly improves visual clarity around curve edges.
+</p>
+<ul>
+  <li><strong>Aliased vs. Anti-aliased comparison:</strong></li>
+  <li><img src="images/glyph_S_aliased.png" alt="Aliased glyph S" width="220" /> <img src="images/glyph_S_antialiased.png" alt="Anti-aliased glyph S" width="220" /></li>
+  <li><strong>Other results:</strong> <img src="images/glyph_A.png" alt="Glyph A" width="220" /> <img src="images/glyph_O.png" alt="Glyph O" width="220" /></li>
+</ul>
+<p><em>(If your results are not yet exported as images, please save them from your notebook as PNGs/GIFs and place them in the <code>images/</code> directory.)</em></p>
+<p>
+<strong>Video Demo:</strong><br>
+<a href="https://drive.google.com/file/d/1Ogt1gKZmkFgK7jSlOTIR9zGqB9kItZs-/view?usp=drive_link" target="_blank">Part 1</a> | <a href="https://drive.google.com/file/d/1GR0mNm5VAYF-Se6fpPuEyl-H2wtc7GZH/view?usp=drive_link" target="_blank">Part 2</a>
+</p>
+<p>
+<strong>Interactive Demo:</strong><br>
+<a href="https://vbansal-29.github.io/cs184_final/" target="_blank">https://vbansal-29.github.io/cs184_final/</a>
+</p>
+
+<h2>References</h2>
+<ul>
+  <li>FreeType library &amp; freetype-py: <a href="https://github.com/rougier/freetype-py" target="_blank">https://github.com/rougier/freetype-py</a></li>
+  <li>TrueType Font Specification: <a href="https://docs.microsoft.com/en-us/typography/opentype/spec/ttch01" target="_blank">Microsoft Typography Spec</a></li>
+  <li>Matplotlib for visualization: <a href="https://matplotlib.org/" target="_blank">https://matplotlib.org/</a></li>
+  <li>Relevant papers on font rasterization (e.g., Loop &amp; Blinn, 2005)</li>
+  <li>Python, NumPy, and SciPy for numerical processing</li>
+</ul>
+
+<h2>Contributions</h2>
+<ul>
+  <li><strong>Vishal Bansal:</strong> Glyph outline extraction, Bézier path reconstruction, and CPU rasterizer implementation.</li>
+  <li><strong>Varun Mittal:</strong> Anti-aliasing integration, performance benchmarking, and results visualization.</li>
+  <li><strong>Clara Kim:</strong> GPU rasterizer exploration, interactive demo development, and documentation.</li>
+  <li><strong>Saatvik Billa:</strong> Pipeline modularization, debugging, and final report preparation.</li>
+</ul>
+
+</div>
+</body>
+</html>
