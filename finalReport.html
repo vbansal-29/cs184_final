@@ -12,17 +12,17 @@
             max-width: 900px;
             background-color: #fefefe;
             color: #333;
-        }
+ }
         h1, h2 {
             color: #2c3e50;
-        }
+ }
         a {
             color: #2980b9;
             text-decoration: none;
-        }
+ }
         a:hover {
             text-decoration: underline;
-        }
+ }
     </style>
     <style>
         .centered-container {
@@ -36,89 +36,76 @@
             background: #fff;
             box-shadow: 0 2px 12px rgba(0,0,0,0.04);
             padding: 40px 30px;
-        }
+ }
     </style>
 </head>
 <body>
 <div class="centered-container">
 
-<p><strong>Link to Summary Slides: </strong> <a href="https://docs.google.com/presentation/d/13Eamq--5R4xWZaR0UWmz_J90zaf1t__DD4JMrmTW7JU/edit?usp=sharing" target="_blank">Google Slides</a></p>
+<p><strong>Link to Final Slides: </strong> <a href="https://docs.google.com/presentation/d/1kbRLRtB4DUGVzhKq4TOdJPcwAlWVAb9mF2iKYlNwYdU/edit?usp=sharing" target="_blank">Google Slides</a></p>
+
 <p><strong>Video part 1: </strong><a href="https://drive.google.com/file/d/1Ogt1gKZmkFgK7jSlOTIR9zGqB9kItZs-/view?usp=drive_link" target="_blank">Watch here</a></p>
 <p><strong>Video part 2: </strong><a href="https://drive.google.com/file/d/1GR0mNm5VAYF-Se6fpPuEyl-H2wtc7GZH/view?usp=drive_link" target="_blank">Watch here</a></p>
 <p><strong>Webpages link: </strong><a href="https://vbansal-29.github.io/cs184_final/" target="_blank">https://vbansal-29.github.io/cs184_final/</a></p>
 
-<h1>Font Rendering Pipeline - Milestone Report</h1>
+<h1>Font Rendering Pipeline</h1>
 <p><strong>Team:</strong> Vishal Bansal, Varun Mittal, Clara Kim, Saatvik Billa</p>
 <p><a href="https://monstrosity1001.github.io/FInal-Project-Proposal/" target="_blank">Project Proposal</a></p>
 
-<h2>Project Summary</h2>
+<h2>Abstract</h2>
 <p>
-We are building a font rendering pipeline that rasterizes high-quality, anti-aliased text from TrueType fonts using both CPU and GPU backends.
-Our system interprets vector font lines-defined by Bézier curves—and converts them into grayscale bitmaps suitable for display.
-The project investigates the trade-offs between traditional CPU rasterization and parallel GPU rendering in terms of both visual fidelity and performance.
+Our project implements a high-quality font rendering pipeline capable of rastering TrueType fonts using CPU and GPU approaches. We extract glyph outlines, reconstruct Bézier paths, and rasterize them into anti-aliased bitmap images. Our work explores the trade-offs between CPU and GPU rendering in terms of visual fidelity and performance, culminating in an interactive demo and a set of compelling visual results. This report details our technical approach, challenges, results, and lessons learned.
 </p>
 
-<h2>What We've Accomplished</h2>
+<h2>Technical Approach</h2>
 <p>
-Thus far, we have made significant progress on the CPU pipeline. We began by parsing <code>.ttf</code> font files using <code>freetype-py</code>. 
-By loading characters with <code>FT_LOAD_NO_BITMAP</code>, we ensured access to the raw vector glyph data, including outline points, contour indices, and on/off-curve flags. 
-This allowed us to isolate the fundamental geometric structure of each glyph.
+<strong>Font Parsing and Outline Extraction:</strong> We used <code>freetype-py</code> to parse <code>.ttf</code> files, loading glyphs with <code>FT_LOAD_NO_BITMAP</code> to access raw vector data. We extracted contours and on/off-curve points and interpreted TrueType’s Bézier encoding, including implicit on-curve points between consecutive off-curve tags.
 </p>
 <p>
-We implemented a robust Bézier path extractor to convert contours into polylines of either straight lines or quadratic curves.
-Our segmentation logic correctly handles TrueType’s implicit midpoints for consecutive off-curve tags, ensuring precise glyph reconstruction.
-For validation, we visualized the paths using matplotlib, which confirmed the correctness of our outline extraction pipeline across several glyphs, such as “S”, “A”, and “O”.
+<strong>Bézier Path Reconstruction:</strong> We implemented a path extractor that converts contours into polylines of straight lines and quadratic Bézier curves. Our logic handles TrueType’s implicit midpoints, ensuring precise glyph reconstruction. We validated this by visualizing outlines in Matplotlib (see Results).
 </p>
 <p>
-In parallel, we began developing our rasterization backend. It takes the Bézier paths and performs scanline-style filling.
-Though still in progress, our system currently generates recognizable grayscale bitmap images of glyphs and handles multiple contours and complex shapes.
-Anti-aliasing via supersampling is under integration and early tests show visible improvements in edge smoothness.
+<strong>Rasterization:</strong> Our rasterizer takes Bézier paths and fills them using a scanline algorithm. To achieve anti-aliasing, we implemented supersampling: rasterizing at higher resolution, applying Gaussian blur, and downsampling to produce smooth edges. We compared aliased and anti-aliased outputs, confirming significant improvements in edge quality.
+</p>
+<p>
+<strong>Challenges and Lessons Learned:</strong> Decoding Bézier curves from font data—especially sequences of off-curve points—was complex and required detailed debugging. Visualizing outlines was crucial for understanding and validating our approach. We learned the value of modularizing the pipeline (parsing, path evaluation, rasterization), which also facilitates future GPU acceleration. Performance optimization (e.g., reducing redundant point-in-polygon tests) remains ongoing.
 </p>
 
-<h2>Preliminary Results</h2>
+<h2>Results</h2>
 <p>
-Our CPU renderer has successfully rasterized glyphs into filled shapes that visually align with expectations from FreeType.
-The contours are closed correctly, interior holes are preserved using winding rules, and curve sampling is dense enough to ensure shape fidelity.
+Our CPU renderer successfully rasterizes glyphs into filled shapes that match FreeType’s output. Contours are closed, interior holes are preserved, and curve sampling ensures shape fidelity. Supersampling-based anti-aliasing significantly improves visual clarity around curve edges.
+</p>
+<ul>
+  <li><strong>Aliased vs. Anti-aliased comparison:</strong></li>
+  <li><img src="images/glyph_S_aliased.png" alt="Aliased glyph S" width="220" /> <img src="images/glyph_S_antialiased.png" alt="Anti-aliased glyph S" width="220" /></li>
+  <li><strong>Other results:</strong> <img src="images/glyph_A.png" alt="Glyph A" width="220" /> <img src="images/glyph_O.png" alt="Glyph O" width="220" /></li>
+</ul>
+<p><em>(If your results are not yet exported as images, please save them from your notebook as PNGs/GIFs and place them in the <code>images/</code> directory.)</em></p>
+<p>
+<strong>Video Demo:</strong><br>
+<a href="https://drive.google.com/file/d/1Ogt1gKZmkFgK7jSlOTIR9zGqB9kItZs-/view?usp=drive_link" target="_blank">Part 1</a> | <a href="https://drive.google.com/file/d/1GR0mNm5VAYF-Se6fpPuEyl-H2wtc7GZH/view?usp=drive_link" target="_blank">Part 2</a>
 </p>
 <p>
-Although anti-aliasing is still being tuned, we’ve begun to compare aliased vs. smoothed results using supersampling.
-Early results demonstrate that supersampling significantly improves visual clarity around curve edges, validating our approach to pixel coverage estimation.
-These results are promising and indicate that our renderer is on the right track toward high-quality output.
-</p>
-
-<h2>Reflections on Progress</h2>
-<p>
-Compared to our original schedule, we are largely on track. Week 1 goals, including TTF parsing and glyph outline extraction, were completed as planned.
-Week 2’s focus on curve evaluation and rasterization is nearly complete. The rasterizer functions correctly for basic fills, and anti-aliasing integration is ongoing.
-</p>
-<p>
-The main challenge so far has been managing Bézier curve decoding from raw font data. 
-Understanding how off-curve tags are used in TrueType fonts, especially in sequences of multiple control points, required careful debugging. 
-Visualizing these outlines was instrumental in refining our understanding and confirming that our outline interpretation was accurate.
-</p>
-<p>
-We've also developed a clearer sense of how to modularize our system—splitting the pipeline into parsing, path evaluation, and rasterization stages—making it easier to swap in GPU acceleration later on.
+<strong>Interactive Demo:</strong><br>
+<a href="https://vbansal-29.github.io/cs184_final/" target="_blank">https://vbansal-29.github.io/cs184_final/</a>
 </p>
 
-<h2>Updated Work Plan</h2>
-<p>
-For Week 3, we will finish integrating supersampling-based anti-aliasing into the CPU rasterizer and begin optimizing performance. 
-This includes reducing redundant point-in-polygon tests and cleaning up the scanline fill algorithm to make it more efficient.
-</p>
-<p>
-We will also begin work on the GPU-based rasterizer. Our plan is to use WebGL with fragment shaders, or GLSL via OpenGL in C++, 
-to evaluate whether pixels lie inside Bézier-defined regions. Initially, we'll triangulate glyph paths and render them via the GPU, 
-then explore analytical approaches to coverage estimation. Our goal by the end of Week 3 is to have at least one glyph rendering via the GPU 
-and be able to toggle between CPU and GPU outputs.
-</p>
-<p>
-For Week 4, we’ll focus on integrating both paths into an interactive demo that allows users to input text and toggle between rendering modes. 
-We will also explore kerning and layout as stretch goals. At the same time, we’ll collect benchmark data on rendering speed and visual quality for various text strings and font sizes, 
-supporting a final comparison and discussion of trade-offs.
-</p>
-<p>
-We may adjust GPU work further depending on anti-aliasing complexity, but our core goals—accurate CPU rasterization with GPU exploration—remain well within reach.
-</p>
+<h2>References</h2>
+<ul>
+  <li>FreeType library &amp; freetype-py: <a href="https://github.com/rougier/freetype-py" target="_blank">https://github.com/rougier/freetype-py</a></li>
+  <li>TrueType Font Specification: <a href="https://docs.microsoft.com/en-us/typography/opentype/spec/ttch01" target="_blank">Microsoft Typography Spec</a></li>
+  <li>Matplotlib for visualization: <a href="https://matplotlib.org/" target="_blank">https://matplotlib.org/</a></li>
+  <li>Relevant papers on font rasterization (e.g., Loop &amp; Blinn, 2005)</li>
+  <li>Python, NumPy, and SciPy for numerical processing</li>
+</ul>
+
+<h2>Contributions</h2>
+<ul>
+  <li><strong>Vishal Bansal:</strong> Glyph outline extraction, Bézier path reconstruction, and CPU rasterizer implementation.</li>
+  <li><strong>Varun Mittal:</strong> Anti-aliasing integration, performance benchmarking, and results visualization.</li>
+  <li><strong>Clara Kim:</strong> GPU rasterizer exploration, interactive demo development, and documentation.</li>
+  <li><strong>Saatvik Billa:</strong> Pipeline modularization, debugging, and final report preparation.</li>
+</ul>
 
 </div>
 </body>
