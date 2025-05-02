@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Homebrew) (preloaded format=pdflatex 2025.1.26)  1 MAY 2025 16:50
+This is pdfTeX, Version 3.141592653-2.6-1.40.26 (TeX Live 2024/Homebrew) (preloaded format=pdflatex 2025.1.26)  1 MAY 2025 18:00
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -300,40 +300,40 @@ Underfull \hbox (badness 10000) in paragraph at lines 29--30
 
  []
 
+
+Underfull \hbox (badness 10000) in paragraph at lines 31--32
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 33--34
+
+ []
+
 (./report.toc
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <10.95> on input line 3.
-)
+ [1
+
+{/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}{/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}])
 \tf@toc=\write4
 \openout4 = `report.toc'.
 
- [1
-
-{/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/map/pdftex/updmap/pdftex.map}{/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}] [2]
-LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 46.
+ [2] [3]
+LaTeX Font Info:    Trying to load font information for T1+cmtt on input line 50.
  (/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
-Underfull \hbox (badness 10000) in paragraph at lines 65--66
-
- []
-
-[3]
-Underfull \hbox (badness 10000) in paragraph at lines 67--68
-
- []
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 69--70
 
  []
 
-
+[4]
 Underfull \hbox (badness 10000) in paragraph at lines 71--72
 
  []
 
-[4]
+
 Underfull \hbox (badness 10000) in paragraph at lines 73--74
 
  []
@@ -343,117 +343,127 @@ Underfull \hbox (badness 10000) in paragraph at lines 75--76
 
  []
 
-<../images/glyphOutlineNotWorking.jpg, id=85, 849.1725pt x 839.135pt>
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 77--78
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 79--80
+
+ []
+
+<../images/glyphOutlineNotWorking.jpg, id=90, 849.1725pt x 839.135pt>
 File: ../images/glyphOutlineNotWorking.jpg Graphic file (type jpg)
 <use ../images/glyphOutlineNotWorking.jpg>
-Package pdftex.def Info: ../images/glyphOutlineNotWorking.jpg  used on input line 79.
+Package pdftex.def Info: ../images/glyphOutlineNotWorking.jpg  used on input line 83.
 (pdftex.def)             Requested size: 140.92793pt x 139.25795pt.
-<../images/glyphOutlineFix.jpg, id=86, 849.1725pt x 839.135pt>
+<../images/glyphOutlineFix.jpg, id=91, 849.1725pt x 839.135pt>
 File: ../images/glyphOutlineFix.jpg Graphic file (type jpg)
 <use ../images/glyphOutlineFix.jpg>
-Package pdftex.def Info: ../images/glyphOutlineFix.jpg  used on input line 80.
+Package pdftex.def Info: ../images/glyphOutlineFix.jpg  used on input line 84.
 (pdftex.def)             Requested size: 140.92793pt x 139.25795pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 87--88
+Underfull \hbox (badness 10000) in paragraph at lines 91--92
 
  []
 
-<../images/hybridFontAttempt.jpeg, id=88, 979.66pt x 975.645pt>
+<../images/hybridFontAttempt.jpeg, id=93, 979.66pt x 975.645pt>
 File: ../images/hybridFontAttempt.jpeg Graphic file (type jpg)
 <use ../images/hybridFontAttempt.jpeg>
-Package pdftex.def Info: ../images/hybridFontAttempt.jpeg  used on input line 91.
+Package pdftex.def Info: ../images/hybridFontAttempt.jpeg  used on input line 95.
 (pdftex.def)             Requested size: 140.92793pt x 140.34093pt.
-<../images/hybridFont2.jpeg, id=89, 1160.335pt x 1148.29pt>
+<../images/hybridFont2.jpeg, id=94, 1160.335pt x 1148.29pt>
 File: ../images/hybridFont2.jpeg Graphic file (type jpg)
 <use ../images/hybridFont2.jpeg>
-Package pdftex.def Info: ../images/hybridFont2.jpeg  used on input line 92.
+Package pdftex.def Info: ../images/hybridFont2.jpeg  used on input line 96.
 (pdftex.def)             Requested size: 140.92793pt x 139.45338pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 98--99
+Underfull \hbox (badness 10000) in paragraph at lines 102--103
 
  []
 
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 101--102
+[6]
+Underfull \hbox (badness 10000) in paragraph at lines 105--106
 
  []
 
-<../images/noAAForG.png, id=96, 300.6432pt x 299.9205pt>
+<../images/noAAForG.png, id=101, 300.6432pt x 299.9205pt>
 File: ../images/noAAForG.png Graphic file (type png)
 <use ../images/noAAForG.png>
-Package pdftex.def Info: ../images/noAAForG.png  used on input line 107.
+Package pdftex.def Info: ../images/noAAForG.png  used on input line 111.
 (pdftex.def)             Requested size: 140.92793pt x 140.58737pt.
-<../images/AAForG.jpg, id=98, 435.6275pt x 419.5675pt>
+<../images/AAForG.jpg, id=103, 435.6275pt x 419.5675pt>
 File: ../images/AAForG.jpg Graphic file (type jpg)
 <use ../images/AAForG.jpg>
-Package pdftex.def Info: ../images/AAForG.jpg  used on input line 108.
+Package pdftex.def Info: ../images/AAForG.jpg  used on input line 112.
 (pdftex.def)             Requested size: 140.92793pt x 135.73041pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../images/alphabet_grid.jpeg, id=99, 1349.04pt x 1140.26pt>
+<../images/alphabet_grid.jpeg, id=104, 1349.04pt x 1140.26pt>
 File: ../images/alphabet_grid.jpeg Graphic file (type jpg)
 <use ../images/alphabet_grid.jpeg>
-Package pdftex.def Info: ../images/alphabet_grid.jpeg  used on input line 114.
+Package pdftex.def Info: ../images/alphabet_grid.jpeg  used on input line 118.
 (pdftex.def)             Requested size: 328.82707pt x 277.93073pt.
-[6{/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <../images/glyphOutlineNotWorking.jpg> <../images/glyphOutlineFix.jpg> <../images/hybridFontAttempt.jpeg> <../images/hybridFont2.jpeg>]
-<../images/sentence_cs184.jpeg, id=105, 2113.8975pt x 196.735pt>
+[7{/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <../images/glyphOutlineNotWorking.jpg> <../images/glyphOutlineFix.jpg> <../images/hybridFontAttempt.jpeg> <../images/hybridFont2.jpeg>]
+<../images/sentence_cs184.jpeg, id=111, 2113.8975pt x 196.735pt>
 File: ../images/sentence_cs184.jpeg Graphic file (type jpg)
 <use ../images/sentence_cs184.jpeg>
-Package pdftex.def Info: ../images/sentence_cs184.jpeg  used on input line 120.
+Package pdftex.def Info: ../images/sentence_cs184.jpeg  used on input line 124.
 (pdftex.def)             Requested size: 328.82707pt x 30.60167pt.
 
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../images/CPUTimeBenchmark.jpeg, id=106, 690.58pt x 279.0425pt>
+<../images/CPUTimeBenchmark.jpeg, id=112, 690.58pt x 279.0425pt>
 File: ../images/CPUTimeBenchmark.jpeg Graphic file (type jpg)
 <use ../images/CPUTimeBenchmark.jpeg>
-Package pdftex.def Info: ../images/CPUTimeBenchmark.jpeg  used on input line 126.
+Package pdftex.def Info: ../images/CPUTimeBenchmark.jpeg  used on input line 130.
 (pdftex.def)             Requested size: 328.82707pt x 132.87015pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
-<../images/GPUTimeBenchmark.jpeg, id=107, 688.5725pt x 303.1325pt>
+<../images/GPUTimeBenchmark.jpeg, id=113, 688.5725pt x 303.1325pt>
 File: ../images/GPUTimeBenchmark.jpeg Graphic file (type jpg)
 <use ../images/GPUTimeBenchmark.jpeg>
-Package pdftex.def Info: ../images/GPUTimeBenchmark.jpeg  used on input line 132.
+Package pdftex.def Info: ../images/GPUTimeBenchmark.jpeg  used on input line 136.
 (pdftex.def)             Requested size: 328.82707pt x 144.76187pt.
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 141--142
+Underfull \hbox (badness 10000) in paragraph at lines 145--146
 
  []
 
-[7 <../images/noAAForG.png> <../images/AAForG.jpg> <../images/alphabet_grid.jpeg>]
-Underfull \hbox (badness 10000) in paragraph at lines 143--144
+[8 <../images/noAAForG.png> <../images/AAForG.jpg> <../images/alphabet_grid.jpeg>]
+Underfull \hbox (badness 10000) in paragraph at lines 147--148
 
  []
 
-[8 <../images/sentence_cs184.jpeg> <../images/CPUTimeBenchmark.jpeg>]
-Overfull \hbox (7.5899pt too wide) in paragraph at lines 149--151
+[9 <../images/sentence_cs184.jpeg> <../images/CPUTimeBenchmark.jpeg>]
+Overfull \hbox (7.5899pt too wide) in paragraph at lines 153--155
 []\T1/cmr/bx/n/10.95 TrueType Font Spec-i-fi-ca-tion: [][]$\T1/cmtt/m/n/10.95 https : / / learn . microsoft . com / en-[]us / typography / opentype /
  []
 
 
-Overfull \hbox (1.07718pt too wide) in paragraph at lines 153--154
+Overfull \hbox (1.07718pt too wide) in paragraph at lines 157--158
 []\T1/cmr/bx/n/10.95 Loop & Blinn (2005), ``Res-o-lu-tion In-de-pen-dent Curve Ren-der-ing us-ing Pro-grammable
  []
 
-[9 <../images/GPUTimeBenchmark.jpeg>]
-Overfull \hbox (16.29135pt too wide) in paragraph at lines 158--159
+[10 <../images/GPUTimeBenchmark.jpeg>]
+Overfull \hbox (16.29135pt too wide) in paragraph at lines 162--163
 [][][]$\T1/cmtt/m/n/10.95 https : / / raphlinus . github . io / graphics / curves / 2019 / 12 / 23 / bezier-[]bounding-[]box . html$[][]\T1/cmr/m/n/10.95 :
  []
 
-[10] (./report.aux)
+[11] (./report.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-02-20>
@@ -462,18 +472,18 @@ Package rerunfilecheck Info: File `report.out' has not changed.
 (rerunfilecheck)             Checksum: E7537E831C0F4F4A147662D6FE88FA4E;1129.
  ) 
 Here is how much of TeX's memory you used:
- 10036 strings out of 474116
- 159683 string characters out of 5732613
+ 10037 strings out of 474116
+ 159690 string characters out of 5732613
  1935187 words of memory out of 5000000
  32256 multiletter control sequences out of 15000+600000
  568468 words of font info for 58 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  75i,7n,79p,1217b,566s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfbx1095.pfb></opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfbx1200.pfb></opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfbx1440.pfb></opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfrm1095.pfb></opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfrm1200.pfb></opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfrm1728.pfb></opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sfti1095.pfb></opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/type1/public/cm-super/sftt1095.pfb>
-Output written on report.pdf (10 pages, 1105587 bytes).
+Output written on report.pdf (11 pages, 1105906 bytes).
 PDF statistics:
- 186 PDF objects out of 1000 (max. 8388607)
- 144 compressed objects within 2 object streams
- 29 named destinations out of 1000 (max. 500000)
+ 191 PDF objects out of 1000 (max. 8388607)
+ 148 compressed objects within 2 object streams
+ 30 named destinations out of 1000 (max. 500000)
  131 words of extra memory for PDF output out of 10000 (max. 10000000)
 

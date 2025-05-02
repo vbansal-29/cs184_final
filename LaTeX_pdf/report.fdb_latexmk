@@ -1,5 +1,5 @@
 # Fdb version 4
-["pdflatex"] 1746143402.92765 "/Users/varun/Desktop/Berkeley/Classes/Spring25/cs184/Final Project/Code/cs184_final/LaTeX_pdf/report.tex" "report.pdf" "report" 1746143403.54645 0
+["pdflatex"] 1746147626.35991 "/Users/varun/Desktop/Berkeley/Classes/Spring25/cs184/Final Project/Code/cs184_final/LaTeX_pdf/report.tex" "report.pdf" "report" 1746147627.08099 0
   "../images/AAForG.jpg" 1746087030.11228 34158 c9ab7a006be3b046520485e1f6ceeb6e ""
   "../images/CPUTimeBenchmark.jpeg" 1746087397.23541 60977 3a4522a6353e309acfb8f5b042468e9f ""
   "../images/GPUTimeBenchmark.jpeg" 1746087107.08319 46422 b8a83e04c3982e3998e321c41c7a09ea ""
@@ -10,7 +10,7 @@
   "../images/hybridFontAttempt.jpeg" 1746123432.46697 145276 58dc48c7ddb33ca7c3b1b6613f80b409 ""
   "../images/noAAForG.png" 1745214927.54286 8730 2996444b19f37b9b8946b2cf094910bf ""
   "../images/sentence_cs184.jpeg" 1746086805.43242 55918 9f50e312f6a18113d595a3949ba40eb7 ""
-  "/Users/varun/Desktop/Berkeley/Classes/Spring25/cs184/Final Project/Code/cs184_final/LaTeX_pdf/report.tex" 1746143402.72438 15362 c2f1377e3719eb096b15e844e509d2f2 ""
+  "/Users/varun/Desktop/Berkeley/Classes/Spring25/cs184/Final Project/Code/cs184_final/LaTeX_pdf/report.tex" 1746147625.55103 15484 2d4dd0d033d67e50c72a783a0de74bfc ""
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc" 1710106625 2971 def0b6c1f0b107b3b936def894055589 ""
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc" 1710106625 2900 1537cc8184ad1792082cd229ecc269f4 ""
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/fonts/map/fontname/texfonts.map" 1710106625 3524 cb3e574dea2d1052e39280babc910dc8 ""
@@ -97,10 +97,10 @@
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/tex/latex/xcolor/xcolor.sty" 1710106625 55487 80a65caedd3722f4c20a14a69e785d8f ""
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-dist/web2c/texmf.cnf" 1710106625 41652 e14926ab86fde7902cad99d9eeaa5ca5 ""
   "/opt/homebrew/Cellar/texlive/20240312_3/share/texmf-var/web2c/pdftex/pdflatex.fmt" 1710106625 8221850 70c9897997689f17e0fe3af32a6be553 ""
-  "report.aux" 1746143403.46184 2590 f57a1aaa6960914d852a2d5189fee81c "pdflatex"
-  "report.out" 1746143403.46241 1129 e7537e831c0f4f4a147662d6fe88fa4e "pdflatex"
-  "report.tex" 1746143402.72438 15362 c2f1377e3719eb096b15e844e509d2f2 ""
-  "report.toc" 1746143403.46263 728 213dab645706488ac2ef965eeeeb209f "pdflatex"
+  "report.aux" 1746147626.99754 2592 be6c78c296f0a7ba9962c08574ad048b "pdflatex"
+  "report.out" 1746147626.99819 1129 e7537e831c0f4f4a147662d6fe88fa4e "pdflatex"
+  "report.tex" 1746147625.55103 15484 2d4dd0d033d67e50c72a783a0de74bfc ""
+  "report.toc" 1746147626.9984 729 2daf5a70d8b0276443cecd8a426de4b5 "pdflatex"
   (generated)
   "report.aux"
   "report.log"
